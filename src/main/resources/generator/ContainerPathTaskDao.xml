@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.study.entity.dto.ContainerPathTaskDao">
+  <resultMap id="BaseResultMap" type="com.du.study.entity.po.ContainerPathTask">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pallet_no" jdbcType="VARCHAR" property="palletNo" />
+    <result column="container_no" jdbcType="VARCHAR" property="containerNo" />
+    <result column="source_area" jdbcType="VARCHAR" property="sourceArea" />
+    <result column="source_location" jdbcType="VARCHAR" property="sourceLocation" />
+    <result column="target_area" jdbcType="VARCHAR" property="targetArea" />
+    <result column="target_location" jdbcType="VARCHAR" property="targetLocation" />
+    <result column="actual_height" jdbcType="INTEGER" property="actualHeight" />
+    <result column="call_back" jdbcType="INTEGER" property="callBack" />
+    <result column="task_type" jdbcType="INTEGER" property="taskType" />
+    <result column="task_state" jdbcType="INTEGER" property="taskState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="entrance1_property1" jdbcType="VARCHAR" property="entrance1Property1" />
+    <result column="entrance1_property2" jdbcType="VARCHAR" property="entrance1Property2" />
+    <result column="property1" jdbcType="VARCHAR" property="property1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pallet_no, container_no, source_area, source_location, target_area, target_location, 
+    actual_height, call_back, task_type, task_state, create_time, update_time, entrance1_property1, 
+    entrance1_property2, property1
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from container_path_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from container_path_task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.ContainerPathTask" useGeneratedKeys="true">
+    insert into container_path_task (pallet_no, container_no, source_area, 
+      source_location, target_area, target_location, 
+      actual_height, call_back, task_type, 
+      task_state, create_time, update_time, 
+      entrance1_property1, entrance1_property2, 
+      property1)
+    values (#{palletNo,jdbcType=VARCHAR}, #{containerNo,jdbcType=VARCHAR}, #{sourceArea,jdbcType=VARCHAR}, 
+      #{sourceLocation,jdbcType=VARCHAR}, #{targetArea,jdbcType=VARCHAR}, #{targetLocation,jdbcType=VARCHAR}, 
+      #{actualHeight,jdbcType=INTEGER}, #{callBack,jdbcType=INTEGER}, #{taskType,jdbcType=INTEGER}, 
+      #{taskState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{entrance1Property1,jdbcType=VARCHAR}, #{entrance1Property2,jdbcType=VARCHAR}, 
+      #{property1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.ContainerPathTask" useGeneratedKeys="true">
+    insert into container_path_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="palletNo != null">
+        pallet_no,
+      </if>
+      <if test="containerNo != null">
+        container_no,
+      </if>
+      <if test="sourceArea != null">
+        source_area,
+      </if>
+      <if test="sourceLocation != null">
+        source_location,
+      </if>
+      <if test="targetArea != null">
+        target_area,
+      </if>
+      <if test="targetLocation != null">
+        target_location,
+      </if>
+      <if test="actualHeight != null">
+        actual_height,
+      </if>
+      <if test="callBack != null">
+        call_back,
+      </if>
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="taskState != null">
+        task_state,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="entrance1Property1 != null">
+        entrance1_property1,
+      </if>
+      <if test="entrance1Property2 != null">
+        entrance1_property2,
+      </if>
+      <if test="property1 != null">
+        property1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="palletNo != null">
+        #{palletNo,jdbcType=VARCHAR},
+      </if>
+      <if test="containerNo != null">
+        #{containerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceArea != null">
+        #{sourceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLocation != null">
+        #{sourceLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="targetArea != null">
+        #{targetArea,jdbcType=VARCHAR},
+      </if>
+      <if test="targetLocation != null">
+        #{targetLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualHeight != null">
+        #{actualHeight,jdbcType=INTEGER},
+      </if>
+      <if test="callBack != null">
+        #{callBack,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=INTEGER},
+      </if>
+      <if test="taskState != null">
+        #{taskState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entrance1Property1 != null">
+        #{entrance1Property1,jdbcType=VARCHAR},
+      </if>
+      <if test="entrance1Property2 != null">
+        #{entrance1Property2,jdbcType=VARCHAR},
+      </if>
+      <if test="property1 != null">
+        #{property1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.du.study.entity.po.ContainerPathTask">
+    update container_path_task
+    <set>
+      <if test="palletNo != null">
+        pallet_no = #{palletNo,jdbcType=VARCHAR},
+      </if>
+      <if test="containerNo != null">
+        container_no = #{containerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceArea != null">
+        source_area = #{sourceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLocation != null">
+        source_location = #{sourceLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="targetArea != null">
+        target_area = #{targetArea,jdbcType=VARCHAR},
+      </if>
+      <if test="targetLocation != null">
+        target_location = #{targetLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualHeight != null">
+        actual_height = #{actualHeight,jdbcType=INTEGER},
+      </if>
+      <if test="callBack != null">
+        call_back = #{callBack,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        task_type = #{taskType,jdbcType=INTEGER},
+      </if>
+      <if test="taskState != null">
+        task_state = #{taskState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entrance1Property1 != null">
+        entrance1_property1 = #{entrance1Property1,jdbcType=VARCHAR},
+      </if>
+      <if test="entrance1Property2 != null">
+        entrance1_property2 = #{entrance1Property2,jdbcType=VARCHAR},
+      </if>
+      <if test="property1 != null">
+        property1 = #{property1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.du.study.entity.po.ContainerPathTask">
+    update container_path_task
+    set pallet_no = #{palletNo,jdbcType=VARCHAR},
+      container_no = #{containerNo,jdbcType=VARCHAR},
+      source_area = #{sourceArea,jdbcType=VARCHAR},
+      source_location = #{sourceLocation,jdbcType=VARCHAR},
+      target_area = #{targetArea,jdbcType=VARCHAR},
+      target_location = #{targetLocation,jdbcType=VARCHAR},
+      actual_height = #{actualHeight,jdbcType=INTEGER},
+      call_back = #{callBack,jdbcType=INTEGER},
+      task_type = #{taskType,jdbcType=INTEGER},
+      task_state = #{taskState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      entrance1_property1 = #{entrance1Property1,jdbcType=VARCHAR},
+      entrance1_property2 = #{entrance1Property2,jdbcType=VARCHAR},
+      property1 = #{property1,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

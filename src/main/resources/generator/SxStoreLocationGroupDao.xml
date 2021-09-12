@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.study.entity.dto.SxStoreLocationGroupDao">
+  <resultMap id="BaseResultMap" type="com.du.study.entity.po.SxStoreLocationGroup">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="store_no" jdbcType="VARCHAR" property="storeNo" />
+    <result column="store_location_group_id" jdbcType="INTEGER" property="storeLocationGroupId" />
+    <result column="layer" jdbcType="INTEGER" property="layer" />
+    <result column="x" jdbcType="INTEGER" property="x" />
+    <result column="y" jdbcType="INTEGER" property="y" />
+    <result column="store_location_id1" jdbcType="INTEGER" property="storeLocationId1" />
+    <result column="store_location_id2" jdbcType="INTEGER" property="storeLocationId2" />
+    <result column="ascent_lock_state" jdbcType="INTEGER" property="ascentLockState" />
+    <result column="location_index" jdbcType="INTEGER" property="locationIndex" />
+    <result column="depth" jdbcType="INTEGER" property="depth" />
+    <result column="dept_num" jdbcType="INTEGER" property="deptNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="vertical_location_group_id" jdbcType="INTEGER" property="verticalLocationGroupId" />
+    <result column="actual_weight" jdbcType="DOUBLE" property="actualWeight" />
+    <result column="limit_weight" jdbcType="DOUBLE" property="limitWeight" />
+    <result column="is_inBound_location" jdbcType="INTEGER" property="isInboundLocation" />
+    <result column="wms_store_no" jdbcType="VARCHAR" property="wmsStoreNo" />
+    <result column="task_lock" jdbcType="INTEGER" property="taskLock" />
+    <result column="area_no" jdbcType="VARCHAR" property="areaNo" />
+    <result column="is_exception" jdbcType="VARCHAR" property="isException" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, store_no, store_location_group_id, layer, x, y, store_location_id1, store_location_id2, 
+    ascent_lock_state, location_index, `depth`, dept_num, create_time, vertical_location_group_id, 
+    actual_weight, limit_weight, is_inBound_location, wms_store_no, task_lock, area_no, 
+    is_exception
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sx_store_location
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sx_store_location
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.SxStoreLocationGroup" useGeneratedKeys="true">
+    insert into sx_store_location (store_no, store_location_group_id, layer, 
+      x, y, store_location_id1, 
+      store_location_id2, ascent_lock_state, location_index, 
+      `depth`, dept_num, create_time, 
+      vertical_location_group_id, actual_weight, limit_weight, 
+      is_inBound_location, wms_store_no, task_lock, 
+      area_no, is_exception)
+    values (#{storeNo,jdbcType=VARCHAR}, #{storeLocationGroupId,jdbcType=INTEGER}, #{layer,jdbcType=INTEGER}, 
+      #{x,jdbcType=INTEGER}, #{y,jdbcType=INTEGER}, #{storeLocationId1,jdbcType=INTEGER}, 
+      #{storeLocationId2,jdbcType=INTEGER}, #{ascentLockState,jdbcType=INTEGER}, #{locationIndex,jdbcType=INTEGER}, 
+      #{depth,jdbcType=INTEGER}, #{deptNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{verticalLocationGroupId,jdbcType=INTEGER}, #{actualWeight,jdbcType=DOUBLE}, #{limitWeight,jdbcType=DOUBLE}, 
+      #{isInboundLocation,jdbcType=INTEGER}, #{wmsStoreNo,jdbcType=VARCHAR}, #{taskLock,jdbcType=INTEGER}, 
+      #{areaNo,jdbcType=VARCHAR}, #{isException,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.SxStoreLocationGroup" useGeneratedKeys="true">
+    insert into sx_store_location
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="storeNo != null">
+        store_no,
+      </if>
+      <if test="storeLocationGroupId != null">
+        store_location_group_id,
+      </if>
+      <if test="layer != null">
+        layer,
+      </if>
+      <if test="x != null">
+        x,
+      </if>
+      <if test="y != null">
+        y,
+      </if>
+      <if test="storeLocationId1 != null">
+        store_location_id1,
+      </if>
+      <if test="storeLocationId2 != null">
+        store_location_id2,
+      </if>
+      <if test="ascentLockState != null">
+        ascent_lock_state,
+      </if>
+      <if test="locationIndex != null">
+        location_index,
+      </if>
+      <if test="depth != null">
+        `depth`,
+      </if>
+      <if test="deptNum != null">
+        dept_num,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="verticalLocationGroupId != null">
+        vertical_location_group_id,
+      </if>
+      <if test="actualWeight != null">
+        actual_weight,
+      </if>
+      <if test="limitWeight != null">
+        limit_weight,
+      </if>
+      <if test="isInboundLocation != null">
+        is_inBound_location,
+      </if>
+      <if test="wmsStoreNo != null">
+        wms_store_no,
+      </if>
+      <if test="taskLock != null">
+        task_lock,
+      </if>
+      <if test="areaNo != null">
+        area_no,
+      </if>
+      <if test="isException != null">
+        is_exception,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="storeNo != null">
+        #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLocationGroupId != null">
+        #{storeLocationGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="layer != null">
+        #{layer,jdbcType=INTEGER},
+      </if>
+      <if test="x != null">
+        #{x,jdbcType=INTEGER},
+      </if>
+      <if test="y != null">
+        #{y,jdbcType=INTEGER},
+      </if>
+      <if test="storeLocationId1 != null">
+        #{storeLocationId1,jdbcType=INTEGER},
+      </if>
+      <if test="storeLocationId2 != null">
+        #{storeLocationId2,jdbcType=INTEGER},
+      </if>
+      <if test="ascentLockState != null">
+        #{ascentLockState,jdbcType=INTEGER},
+      </if>
+      <if test="locationIndex != null">
+        #{locationIndex,jdbcType=INTEGER},
+      </if>
+      <if test="depth != null">
+        #{depth,jdbcType=INTEGER},
+      </if>
+      <if test="deptNum != null">
+        #{deptNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verticalLocationGroupId != null">
+        #{verticalLocationGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="actualWeight != null">
+        #{actualWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="limitWeight != null">
+        #{limitWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="isInboundLocation != null">
+        #{isInboundLocation,jdbcType=INTEGER},
+      </if>
+      <if test="wmsStoreNo != null">
+        #{wmsStoreNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taskLock != null">
+        #{taskLock,jdbcType=INTEGER},
+      </if>
+      <if test="areaNo != null">
+        #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isException != null">
+        #{isException,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.du.study.entity.po.SxStoreLocationGroup">
+    update sx_store_location
+    <set>
+      <if test="storeNo != null">
+        store_no = #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLocationGroupId != null">
+        store_location_group_id = #{storeLocationGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="layer != null">
+        layer = #{layer,jdbcType=INTEGER},
+      </if>
+      <if test="x != null">
+        x = #{x,jdbcType=INTEGER},
+      </if>
+      <if test="y != null">
+        y = #{y,jdbcType=INTEGER},
+      </if>
+      <if test="storeLocationId1 != null">
+        store_location_id1 = #{storeLocationId1,jdbcType=INTEGER},
+      </if>
+      <if test="storeLocationId2 != null">
+        store_location_id2 = #{storeLocationId2,jdbcType=INTEGER},
+      </if>
+      <if test="ascentLockState != null">
+        ascent_lock_state = #{ascentLockState,jdbcType=INTEGER},
+      </if>
+      <if test="locationIndex != null">
+        location_index = #{locationIndex,jdbcType=INTEGER},
+      </if>
+      <if test="depth != null">
+        `depth` = #{depth,jdbcType=INTEGER},
+      </if>
+      <if test="deptNum != null">
+        dept_num = #{deptNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verticalLocationGroupId != null">
+        vertical_location_group_id = #{verticalLocationGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="actualWeight != null">
+        actual_weight = #{actualWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="limitWeight != null">
+        limit_weight = #{limitWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="isInboundLocation != null">
+        is_inBound_location = #{isInboundLocation,jdbcType=INTEGER},
+      </if>
+      <if test="wmsStoreNo != null">
+        wms_store_no = #{wmsStoreNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taskLock != null">
+        task_lock = #{taskLock,jdbcType=INTEGER},
+      </if>
+      <if test="areaNo != null">
+        area_no = #{areaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isException != null">
+        is_exception = #{isException,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.du.study.entity.po.SxStoreLocationGroup">
+    update sx_store_location
+    set store_no = #{storeNo,jdbcType=VARCHAR},
+      store_location_group_id = #{storeLocationGroupId,jdbcType=INTEGER},
+      layer = #{layer,jdbcType=INTEGER},
+      x = #{x,jdbcType=INTEGER},
+      y = #{y,jdbcType=INTEGER},
+      store_location_id1 = #{storeLocationId1,jdbcType=INTEGER},
+      store_location_id2 = #{storeLocationId2,jdbcType=INTEGER},
+      ascent_lock_state = #{ascentLockState,jdbcType=INTEGER},
+      location_index = #{locationIndex,jdbcType=INTEGER},
+      `depth` = #{depth,jdbcType=INTEGER},
+      dept_num = #{deptNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      vertical_location_group_id = #{verticalLocationGroupId,jdbcType=INTEGER},
+      actual_weight = #{actualWeight,jdbcType=DOUBLE},
+      limit_weight = #{limitWeight,jdbcType=DOUBLE},
+      is_inBound_location = #{isInboundLocation,jdbcType=INTEGER},
+      wms_store_no = #{wmsStoreNo,jdbcType=VARCHAR},
+      task_lock = #{taskLock,jdbcType=INTEGER},
+      area_no = #{areaNo,jdbcType=VARCHAR},
+      is_exception = #{isException,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

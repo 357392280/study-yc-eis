@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.study.entity.dto.ContainerPathTaskDetailDao">
+  <resultMap id="BaseResultMap" type="com.du.study.entity.po.ContainerPathTaskDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_task_id" jdbcType="INTEGER" property="orderTaskId" />
+    <result column="seq_no" jdbcType="VARCHAR" property="seqNo" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="goods_lot_id" jdbcType="INTEGER" property="goodsLotId" />
+    <result column="plan_num" jdbcType="INTEGER" property="planNum" />
+    <result column="out_num" jdbcType="INTEGER" property="outNum" />
+    <result column="pick_num" jdbcType="INTEGER" property="pickNum" />
+    <result column="tray_all_num" jdbcType="INTEGER" property="trayAllNum" />
+    <result column="stock_unit" jdbcType="VARCHAR" property="stockUnit" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="complete_time" jdbcType="TIMESTAMP" property="completeTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_task_id, seq_no, task_id, goods_lot_id, plan_num, out_num, pick_num, tray_all_num, 
+    stock_unit, create_time, update_time, complete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_task_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_task_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.ContainerPathTaskDetail" useGeneratedKeys="true">
+    insert into order_task_detail (order_task_id, seq_no, task_id, 
+      goods_lot_id, plan_num, out_num, 
+      pick_num, tray_all_num, stock_unit, 
+      create_time, update_time, complete_time
+      )
+    values (#{orderTaskId,jdbcType=INTEGER}, #{seqNo,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
+      #{goodsLotId,jdbcType=INTEGER}, #{planNum,jdbcType=INTEGER}, #{outNum,jdbcType=INTEGER}, 
+      #{pickNum,jdbcType=INTEGER}, #{trayAllNum,jdbcType=INTEGER}, #{stockUnit,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{completeTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.ContainerPathTaskDetail" useGeneratedKeys="true">
+    insert into order_task_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderTaskId != null">
+        order_task_id,
+      </if>
+      <if test="seqNo != null">
+        seq_no,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="goodsLotId != null">
+        goods_lot_id,
+      </if>
+      <if test="planNum != null">
+        plan_num,
+      </if>
+      <if test="outNum != null">
+        out_num,
+      </if>
+      <if test="pickNum != null">
+        pick_num,
+      </if>
+      <if test="trayAllNum != null">
+        tray_all_num,
+      </if>
+      <if test="stockUnit != null">
+        stock_unit,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="completeTime != null">
+        complete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderTaskId != null">
+        #{orderTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="seqNo != null">
+        #{seqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsLotId != null">
+        #{goodsLotId,jdbcType=INTEGER},
+      </if>
+      <if test="planNum != null">
+        #{planNum,jdbcType=INTEGER},
+      </if>
+      <if test="outNum != null">
+        #{outNum,jdbcType=INTEGER},
+      </if>
+      <if test="pickNum != null">
+        #{pickNum,jdbcType=INTEGER},
+      </if>
+      <if test="trayAllNum != null">
+        #{trayAllNum,jdbcType=INTEGER},
+      </if>
+      <if test="stockUnit != null">
+        #{stockUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.du.study.entity.po.ContainerPathTaskDetail">
+    update order_task_detail
+    <set>
+      <if test="orderTaskId != null">
+        order_task_id = #{orderTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="seqNo != null">
+        seq_no = #{seqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsLotId != null">
+        goods_lot_id = #{goodsLotId,jdbcType=INTEGER},
+      </if>
+      <if test="planNum != null">
+        plan_num = #{planNum,jdbcType=INTEGER},
+      </if>
+      <if test="outNum != null">
+        out_num = #{outNum,jdbcType=INTEGER},
+      </if>
+      <if test="pickNum != null">
+        pick_num = #{pickNum,jdbcType=INTEGER},
+      </if>
+      <if test="trayAllNum != null">
+        tray_all_num = #{trayAllNum,jdbcType=INTEGER},
+      </if>
+      <if test="stockUnit != null">
+        stock_unit = #{stockUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.du.study.entity.po.ContainerPathTaskDetail">
+    update order_task_detail
+    set order_task_id = #{orderTaskId,jdbcType=INTEGER},
+      seq_no = #{seqNo,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      goods_lot_id = #{goodsLotId,jdbcType=INTEGER},
+      plan_num = #{planNum,jdbcType=INTEGER},
+      out_num = #{outNum,jdbcType=INTEGER},
+      pick_num = #{pickNum,jdbcType=INTEGER},
+      tray_all_num = #{trayAllNum,jdbcType=INTEGER},
+      stock_unit = #{stockUnit,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

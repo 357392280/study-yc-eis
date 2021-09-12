@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.study.entity.dto.OrderTaskDao">
+  <resultMap id="BaseResultMap" type="com.du.study.entity.po.OrderTask">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="wms_out_activate" jdbcType="INTEGER" property="wmsOutActivate" />
+    <result column="pick_order_id" jdbcType="INTEGER" property="pickOrderId" />
+    <result column="is_have_all" jdbcType="INTEGER" property="isHaveAll" />
+    <result column="prioirty" jdbcType="INTEGER" property="prioirty" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="consignor" jdbcType="VARCHAR" property="consignor" />
+    <result column="branch_id" jdbcType="VARCHAR" property="branchId" />
+    <result column="bill_no" jdbcType="VARCHAR" property="billNo" />
+    <result column="cust_po_no" jdbcType="VARCHAR" property="custPoNo" />
+    <result column="bill_type" jdbcType="INTEGER" property="billType" />
+    <result column="bill_date" jdbcType="TIMESTAMP" property="billDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="complete_time" jdbcType="TIMESTAMP" property="completeTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, wms_out_activate, pick_order_id, is_have_all, prioirty, order_status, task_id, 
+    consignor, branch_id, bill_no, cust_po_no, bill_type, bill_date, create_time, update_time, 
+    complete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.OrderTask" useGeneratedKeys="true">
+    insert into order_task (wms_out_activate, pick_order_id, is_have_all, 
+      prioirty, order_status, task_id, 
+      consignor, branch_id, bill_no, 
+      cust_po_no, bill_type, bill_date, 
+      create_time, update_time, complete_time
+      )
+    values (#{wmsOutActivate,jdbcType=INTEGER}, #{pickOrderId,jdbcType=INTEGER}, #{isHaveAll,jdbcType=INTEGER}, 
+      #{prioirty,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{taskId,jdbcType=VARCHAR}, 
+      #{consignor,jdbcType=VARCHAR}, #{branchId,jdbcType=VARCHAR}, #{billNo,jdbcType=VARCHAR}, 
+      #{custPoNo,jdbcType=VARCHAR}, #{billType,jdbcType=INTEGER}, #{billDate,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{completeTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.du.study.entity.po.OrderTask" useGeneratedKeys="true">
+    insert into order_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wmsOutActivate != null">
+        wms_out_activate,
+      </if>
+      <if test="pickOrderId != null">
+        pick_order_id,
+      </if>
+      <if test="isHaveAll != null">
+        is_have_all,
+      </if>
+      <if test="prioirty != null">
+        prioirty,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="consignor != null">
+        consignor,
+      </if>
+      <if test="branchId != null">
+        branch_id,
+      </if>
+      <if test="billNo != null">
+        bill_no,
+      </if>
+      <if test="custPoNo != null">
+        cust_po_no,
+      </if>
+      <if test="billType != null">
+        bill_type,
+      </if>
+      <if test="billDate != null">
+        bill_date,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="completeTime != null">
+        complete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wmsOutActivate != null">
+        #{wmsOutActivate,jdbcType=INTEGER},
+      </if>
+      <if test="pickOrderId != null">
+        #{pickOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="isHaveAll != null">
+        #{isHaveAll,jdbcType=INTEGER},
+      </if>
+      <if test="prioirty != null">
+        #{prioirty,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="consignor != null">
+        #{consignor,jdbcType=VARCHAR},
+      </if>
+      <if test="branchId != null">
+        #{branchId,jdbcType=VARCHAR},
+      </if>
+      <if test="billNo != null">
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custPoNo != null">
+        #{custPoNo,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null">
+        #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="billDate != null">
+        #{billDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.du.study.entity.po.OrderTask">
+    update order_task
+    <set>
+      <if test="wmsOutActivate != null">
+        wms_out_activate = #{wmsOutActivate,jdbcType=INTEGER},
+      </if>
+      <if test="pickOrderId != null">
+        pick_order_id = #{pickOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="isHaveAll != null">
+        is_have_all = #{isHaveAll,jdbcType=INTEGER},
+      </if>
+      <if test="prioirty != null">
+        prioirty = #{prioirty,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="consignor != null">
+        consignor = #{consignor,jdbcType=VARCHAR},
+      </if>
+      <if test="branchId != null">
+        branch_id = #{branchId,jdbcType=VARCHAR},
+      </if>
+      <if test="billNo != null">
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custPoNo != null">
+        cust_po_no = #{custPoNo,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null">
+        bill_type = #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="billDate != null">
+        bill_date = #{billDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.du.study.entity.po.OrderTask">
+    update order_task
+    set wms_out_activate = #{wmsOutActivate,jdbcType=INTEGER},
+      pick_order_id = #{pickOrderId,jdbcType=INTEGER},
+      is_have_all = #{isHaveAll,jdbcType=INTEGER},
+      prioirty = #{prioirty,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      consignor = #{consignor,jdbcType=VARCHAR},
+      branch_id = #{branchId,jdbcType=VARCHAR},
+      bill_no = #{billNo,jdbcType=VARCHAR},
+      cust_po_no = #{custPoNo,jdbcType=VARCHAR},
+      bill_type = #{billType,jdbcType=INTEGER},
+      bill_date = #{billDate,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

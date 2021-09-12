@@ -1,0 +1,28 @@
+spring:
+  datasource:
+#    url: jdbc:mysql://172.22.9.205:3306/plog-eis?characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/szyc_eis?characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 110.42.223.250
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-idle: 8
+        max-wait: -1
+        max-active: 8
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
+server:
+  port: 50001
+mybatis:
+  mapper-locations: classpath*:/generator/*Dao.xml
+
+
+
+
